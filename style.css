@@ -1,0 +1,467 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+
+body {
+    background: black;
+    height: 100vh;
+}
+
+#game {
+    width: 100%;
+    height: 100%;
+}
+
+/* FUNDO DA CAPA */
+.intro-bg {
+    background-image: url("imagens/fundo-inicial1.png");
+}
+
+
+/* TÍTULO SOBRE A IMAGEM */
+.intro-title {
+    font-size: 44px;
+    font-weight: 700;
+
+    color: #ffffff; /* branco */
+
+    margin-bottom: 40px;
+
+    /* borda vermelha delicada */
+    text-shadow:
+        -1px -1px 0 #ff4b4b,
+         1px -1px 0 #ff4b4b,
+        -1px  1px 0 #ff4b4b,
+         1px  1px 0 #ff4b4b,
+         0  6px 14px rgba(0,0,0,0.5);
+}
+
+
+
+/* BOTÃO COMEÇAR */
+.intro-btn {
+    padding: 16px 50px;
+
+    background: linear-gradient(135deg, #ff4b4b, #d81f3c);
+    color: white;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    border-radius: 40px 40px 30px 30px;
+    border: none;
+    cursor: pointer;
+
+    box-shadow: 0 10px 25px rgba(216, 31, 60, 0.5);
+
+    transition: all 0.3s ease;
+}
+
+.intro-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 14px 35px rgba(216, 31, 60, 0.7);
+}
+
+
+
+.intro-box h1 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.start-box input {
+    width: 280px;
+    padding: 16px;
+
+    background: rgba(255, 120, 120, 0.85); /* vermelho claro */
+    color: #5a0000;
+
+    border-radius: 35px;
+    border: none;
+
+    font-size: 16px;
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    box-shadow: 0 8px 18px rgba(180, 0, 0, 0.35);
+}
+
+.start-box input::placeholder {
+    color: white;
+}
+
+
+button {
+    padding: 14px 28px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #ff4b4b, #d81f3c);
+    color: white;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    border-radius: 30px 30px 22px 22px;
+
+    box-shadow: 0 8px 22px rgba(216, 31, 60, 0.45);
+
+    transition: all 0.3s ease;
+}
+
+
+button:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 14px 32px rgba(216, 31, 60, 0.65);
+}
+
+
+#storyText {
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 17px;
+}
+
+
+#memoryScreen img {
+    max-width: 80%;
+    max-height: 60%;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+/* FUNDO DA TELA INICIAL */
+.start-bg {
+    background-image: url("imagens/fundo-inicial2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.name-alert {
+    width: 280px;
+
+    padding: 16px;
+
+    background: rgba(255, 120, 120, 0.85); /* mesmo vermelho do input */
+    color: #ffffff; /* texto branco */
+
+    border-radius: 35px; /* formato pílula */
+    border: none;
+
+    font-size: 15px;
+    text-align: center;
+
+    margin-top: 15px;
+    margin-bottom: 25px;
+
+    box-shadow: 0 8px 18px rgba(180, 0, 0, 0.35);
+
+    display: none;
+
+    animation: fadeIn 0.4s ease;
+}
+
+.name-alert.show {
+    transform: scale(1.03);
+}
+
+
+/* animação suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* CAIXA TRANSPARENTE */
+.start-box {
+    background: rgba(0, 0, 0, 0.5); /* 50% transparente */
+    padding: 50px 40px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* MAIS ESPAÇAMENTO ENTRE OS ELEMENTOS */
+.start-box h1 {
+    margin-bottom: 30px;
+}
+
+.start-box p {
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.start-box input {
+    margin-bottom: 30px;
+}
+
+.start-box button {
+    margin-top: 10px;
+}
+
+
+/* TELA DA HISTÓRIA */
+#storyScreen {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* escurece levemente o fundo para leitura */
+#storyScreen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+/* garante que texto e botões fiquem acima */
+#storyScreen > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* TELA DO VÍDEO */
+#videoScreen {
+    position: relative;
+    background: black;
+}
+
+
+/* vídeo ocupa a tela toda */
+#videoScreen video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* botão oculto */
+#skipVideoBtn {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+
+    z-index: 3; /* SEMPRE acima do vídeo */
+
+    opacity: 0.4;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#skipVideoBtn:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+
+/* TELA FINAL */
+#endScreen {
+    background-image: url("imagens/final.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#endScreen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+#endScreen > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* CORAÇÕES ATRÁS DO VÍDEO */
+.video-hearts {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0; /* atrás do vídeo */
+    pointer-events: none;
+}
+
+.video-heart {
+    position: absolute;
+    bottom: -30px;
+    font-size: 22px;
+    opacity: 0.8;
+    animation: heartFloatUp 6s linear forwards;
+}
+
+@keyframes heartFloatUp {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* CORAÇÕES QUE SAEM DO BOTÃO */
+.btn-heart {
+    position: fixed;
+    font-size: 20px;
+    pointer-events: none;
+    animation: btnHeartUp 1.4s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes btnHeartUp {
+    0% {
+        transform: translate(0, 0) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), -120px) scale(1.4);
+        opacity: 0;
+    }
+}
+
+#memoryImage {
+    cursor: pointer;
+}
+
+.memory-hint {
+    margin-top: 12px;
+    font-size: 13px;
+    opacity: 0.55;
+    font-style: italic;
+    transition: opacity 0.6s ease;
+    user-select: none;
+}
+
+
+/* =========================
+   TELA DE LEMBRANÇA – CLIMA DE MEMÓRIA
+   ========================= */
+
+#memoryScreen {
+    background: radial-gradient(
+        circle at center,
+        rgba(40, 0, 10, 0.95) 0%,
+        rgba(0, 0, 0, 0.98) 70%
+    );
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* imagem como foco absoluto */
+#memoryImage {
+    max-width: 78vw;
+    max-height: 68vh;
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 60px rgba(255, 80, 120, 0.25),
+        0 0 0 1px rgba(255, 200, 220, 0.08);
+
+    cursor: pointer;
+
+    animation: memoryFadeIn 1.2s ease;
+}
+
+/* efeito de respiração (bem sutil) */
+#memoryImage {
+    animation:
+        memoryFadeIn 1.2s ease,
+        memoryBreath 12s ease-in-out infinite;
+}
+
+/* texto quase invisível */
+.memory-hint {
+    margin-top: 14px;
+    font-size: 12px;
+    opacity: 0.35;
+    letter-spacing: 0.5px;
+    font-style: italic;
+}
+
+/* botão voltar discreto */
+#memoryScreen button {
+    margin-top: 30px;
+    opacity: 0.75;
+}
+
+/* animações */
+@keyframes memoryFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes memoryBreath {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+    100% { transform: scale(1); }
+}
